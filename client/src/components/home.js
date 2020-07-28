@@ -1,32 +1,21 @@
-import React, { Component, Fragment } from 'react'
-import { connect } from 'react-redux';
+import React, { Fragment } from 'react'
 
 import { Grid } from '@material-ui/core'
 
-import Header from './header'
-import Content from './content'
+import Header from './layouts/header'
+import Content from './layouts/content'
 
-function mapStateToProps(state) {
-	return {
-
-	}
-}
-
-class Home extends Component {
-	render() {
-		return (
-			<Fragment>
-				<Grid container direction="column">
-					<Grid item>
-						<Header />
-					</Grid>
-					<Grid item>
-						<Content />
-					</Grid>
+export default function Home() {
+	return (
+		<Fragment>
+			<Grid container direction="column">
+				<Grid item>
+					<Header />
 				</Grid>
-			</Fragment>
-		)
-	}
+				<Grid item>
+					<Content />
+				</Grid>
+			</Grid>
+		</Fragment>
+	)
 }
-
-export default connect(mapStateToProps)(Home)
