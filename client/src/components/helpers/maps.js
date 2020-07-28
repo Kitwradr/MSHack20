@@ -1,13 +1,8 @@
-import React, { Component } from 'react'
-
 var Microsoft
 
-function loadBingApi(key) {
+export default function loadBingApi() {
 	const callbackName = "GetMap";
-	let url = `https://www.bing.com/api/maps/mapcontrol?callback=${callbackName}`;
-	if (key) {
-		url += `&key=${key}`;
-	}
+	let url = "http://www.bing.com/api/maps/mapcontrol?callback=GetMap&key=AoUmJwkCEO-LcuZPDFTJQrxCWMp6su1ujEntp66HHnL_TZpQWxGl1MoiHAGwzWVi"
 
 	return new Promise((resolve, reject) => {
 		const script = document.createElement("script");
@@ -26,22 +21,22 @@ function loadBingApi(key) {
 	});
 }
 
-export default class maps extends Component {
-	componentDidMount() {
-		loadBingApi().then(() => {
-			this.initMap();
-		});
-	}
+// export default class maps extends Component {
+// 	componentDidMount() {
+// 		loadBingApi().then(() => {
+// 			this.initMap();
+// 		});
+// 	}
 
-	initMap() {
-		const map = new Microsoft.Maps.Map('#map');
-		if (this.props.mapOptions) {
-			map.setOptions(this.props.mapOptions);
-		}
-		return map;
-	}
+// 	initMap() {
+// 		const map = new Microsoft.Maps.Map('#map');
+// 		if (this.props.mapOptions) {
+// 			map.setOptions(this.props.mapOptions);
+// 		}
+// 		return map;
+// 	}
 
-	render() {
-		return <div id="map" />;
-	}
-}
+// 	render() {
+// 		return <div id="map" />;
+// 	}
+// }

@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux';
 
 import { Grid } from '@material-ui/core'
-import Maps from './helpers/maps';
+import loadBingApi from './helpers/maps';
 
 import qs from 'query-string'
 
@@ -16,12 +16,33 @@ function mapStateToProps(state) {
 
 class Find extends Component {
 
-	componentDidMount() {
+	async componentDidMount() {
 		var filters = qs.parse(this.props.location.search)
 		find.setCategory(filters.category)
-		window.GetMap({
-			center : [51.50632, -0.12714]
-		})
+
+		try {	
+			await loadBingApi()
+			var Microsoft = window.Microsoft
+		}
+		catch(e){
+			find.setCategory("Error")
+		}
+		// if (window.Microsoft) {
+
+		// 	var location = window.createLocation(51.50632, -0.12714)
+
+		// 	var pins = []
+
+		// 	var pin = window.createPins(location, {
+		// 		text: '1'
+		// 	})
+
+		// 	pins.push(pin)
+
+		// 	window.GetMap({
+		// 		center: location
+		// 	}, pins)
+		// }
 	}
 
 	render() {
@@ -29,7 +50,7 @@ class Find extends Component {
 			<Grid container direction="column">
 				Hello
 				<Grid item>
-					<div id="showMap" style={{position:'relative', width:'600px', height:'400px'}}></div>
+					<div id="showMap" style={{ position: 'relative', width: '600px', height: '400px' }}></div>
 				</Grid>
 				{this.props.redirect ? <Redirect to="Error" /> : <Fragment />}
 			</Grid>

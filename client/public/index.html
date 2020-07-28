@@ -15,20 +15,29 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
 	-->
-	<script type='text/javascript'
+	<!-- <script type='text/javascript'
 		src='http://www.bing.com/api/maps/mapcontrol?callback=GetMap&key=AoUmJwkCEO-LcuZPDFTJQrxCWMp6su1ujEntp66HHnL_TZpQWxGl1MoiHAGwzWVi'
 		async defer>
 		</script>
 
 	<script type='text/javascript'>
-		function GetMap(opts) {
+		function GetMap(opts, pins=[]) {
 			var map = new Microsoft.Maps.Map('#showMap', opts);
+
+			for(var i = 0; i < pins.length; i++){
+				map.entities.push(pins[i]);
+			}
 		}
 
-		function SetCenter(){
-			
+		function createLocation(lat, lon) {
+			return new Microsoft.Maps.Location(lat, lon)
 		}
-	</script>
+
+		function createPins(location, opts) {
+			return new Microsoft.Maps.Pushpin(location, opts);
+		}
+
+	</script> -->
 
 	<title>React App</title>
 </head>
