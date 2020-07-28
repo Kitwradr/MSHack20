@@ -14,41 +14,58 @@ function mapStateToProps(state) {
 	return { ...state.find }
 }
 
-class Find extends Component {
+var Microsoft;
 
-	async componentDidMount() {
+class Find extends Component {
+	FetchListItems(){
+
+	}
+
+	GetMap(opts, pins = []) {
+		var map = new Microsoft.Maps.Map('#showMap', opts);
+
+		for (var i = 0; i < pins.length; i++) {
+			map.entities.push(pins[i]);
+		}
+	}
+
+	CreateLocation(lat, lon) {
+		return new Microsoft.Maps.Location(lat, lon)
+	}
+
+	CreatePins(location, opts) {
+		return new Microsoft.Maps.Pushpin(location, opts);
+	}
+
+	componentDidMount() {
 		var filters = qs.parse(this.props.location.search)
 		find.setCategory(filters.category)
 
-		try {	
-			await loadBingApi()
-			var Microsoft = window.Microsoft
-		}
-		catch(e){
-			find.setCategory("Error")
-		}
-		// if (window.Microsoft) {
+		loadBingApi()
+			.then(() => {
+				Microsoft = window.Microsoft
 
-		// 	var location = window.createLocation(51.50632, -0.12714)
+				var location = new window.Microsoft.Maps.Location(51.50632, -0.12714)
 
-		// 	var pins = []
+				find.setUserLocation(location)
 
-		// 	var pin = window.createPins(location, {
-		// 		text: '1'
-		// 	})
+				var pin = this.CreatePins(this.props.userLocation, {
+					text: 'Me'
+				})
 
-		// 	pins.push(pin)
+				find.addPin(pin)				
+				
+				this.GetMap({
+					center: this.props.userLocation
+				}, this.props.pins)
 
-		// 	window.GetMap({
-		// 		center: location
-		// 	}, pins)
-		// }
+			})
 	}
+
 
 	render() {
 		return (
 			<Grid container direction="column">
-				Hello
 				<Grid item>
 					<div id="showMap" style={{ position: 'relative', width: '600px', height: '400px' }}></div>
 				</Grid>
