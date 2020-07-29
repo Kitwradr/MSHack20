@@ -22,11 +22,10 @@ export default function ListItems(props) {
 				{
 					props.items.map((val, key) =>
 						<Button  key={key} onClick={()=>{
-							// console.log(val)
-							// find.selectDestination({...val.location})
+							props.open(val.location)
 						}} style={{ display: 'block', width: "100%" }}>
 							<ListItem>
-								<ListItemText primary={val.name} secondary={val.phoneNumber} />
+								<ListItemText primary={val.index + ". " + val.name} secondary={val.phoneNumber} />
 							</ListItem>
 						</Button>
 					)

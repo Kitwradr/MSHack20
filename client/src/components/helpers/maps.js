@@ -16,23 +16,3 @@ export default function loadBingApi() {
 		document.body.appendChild(script);
 	});
 }
-
-// export default class maps extends Component {
-// 	componentDidMount() {
-// 		loadBingApi().then(() => {
-// 			this.initMap();
-// 		});
-// 	}
-
-// 	initMap() {
-// 		const map = new Microsoft.Maps.Map('#map');
-// 		if (this.props.mapOptions) {
-// 			map.setOptions(this.props.mapOptions);
-// 		}
-// 		return map;
-// 	}
-
-// 	render() {
-// 		return <div id="map" />;
-// 	}
-// }
