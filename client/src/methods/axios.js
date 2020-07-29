@@ -4,7 +4,6 @@ import qs from "querystring"
 var url = "https://distitout.azurewebsites.net/";
 
 const httpGet = (path, data) => {
-	console.log(qs.stringify(data))
 	return axios.get(url + path + "?" + qs.stringify(data))
 }
 
