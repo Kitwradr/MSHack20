@@ -124,6 +124,7 @@ class Find extends Component {
 
 	componentDidMount() {
 		var filters = qs.parse(this.props.location.search)
+		console.log(filters)
 		find.setCategory(filters.category)
 
 		window.httpGet = httpGet
