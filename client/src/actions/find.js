@@ -27,11 +27,41 @@ const removePins = ()=>{
 	})
 }
 
+const addPlace = (place)=>{
+	return store.dispatch({
+        type: "ADD_PLACE",
+        place
+    })
+}
+
+const removePlaces = ()=>{
+	return store.dispatch({
+		type: "REMOVE_PLACES"
+	})
+}
+
+const selectDestination = (destination)=>{
+	return store.dispatch({
+        type: "SELECT_DESTINATION",
+        destination
+    })
+}
+
+const resetUpdateMap = ()=>{
+	return store.dispatch({
+        type: "RESET_UPDATE_MAP",
+    })
+}
+
 const find = {
 	setCategory,
 	setUserLocation,
 	addPin,
-	removePins
+	removePins,
+	addPlace,
+	removePlaces,
+	selectDestination,
+	resetUpdateMap
 }
 
 export default find

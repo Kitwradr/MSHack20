@@ -18,7 +18,7 @@ export default function Main() {
 		},
 		{
 			name: "Recreation",
-			description: "Feeling bored? Search for cool entertainment recreation activities here.",
+			description: "Feeling bored? Want to have fun? Search for cool entertainment recreation activities here.",
 			img: recreation
 		},
 		{
